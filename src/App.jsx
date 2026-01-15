@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./App.css";
+import LoadingSpinner from "./Components/LoadingSpinner";
+import Weather from "./Components/Weather";
 
 function App() {
   const [city, setCity] = useState("");
@@ -113,6 +115,7 @@ function App() {
           {loading ? "Fetching..." : "Get Weather"}
         </button>
 
+
         {/* Error */}
         {error && (
           <h3 className="text-center text-red-400 font-semibold mt-4">
@@ -121,29 +124,7 @@ function App() {
         )}
 
         {/* Weather */}
-        {weather && !loading && (
-          <div className="mt-6 space-y-3">
-            <div className="border border-gray-600 p-3 rounded-lg text-center text-lg font-semibold">
-              {weather.city}
-            </div>
-            <div className="border border-gray-600 p-3 rounded-lg">
-              <span className="font-semibold">Temperature:</span>{" "}
-              {weather.temperature}
-            </div>
-            <div className="border border-gray-600 p-3 rounded-lg">
-              <span className="font-semibold">Wind Speed:</span>{" "}
-              {weather.windSpeed}
-            </div>
-            <div className="border border-gray-600 p-3 rounded-lg">
-              <span className="font-semibold">Humidity:</span>{" "}
-              {weather.humidity}
-            </div>
-            <div className="border border-gray-600 p-3 rounded-lg capitalize">
-              <span className="font-semibold">Description:</span>{" "}
-              {weather.description}
-            </div>
-          </div>
-        )}
+      <Weather weather = {weather} loading = {loading}/>
       </form>
     </div>
   );
